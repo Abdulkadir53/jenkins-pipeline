@@ -1,0 +1,47 @@
+pipeline {
+	
+	agent {
+	
+			label {
+			
+						label 'built-in'
+						customWorkspace '/data/pipeline'
+			
+			}
+	
+	}
+	
+	stages {
+			
+			stage ('stage-1'){
+						steps {
+								sh "rm -rf *"
+								sh "mkdir velocity"
+						}
+			}
+			
+			stage ('stage-2'){
+						steps {
+							dir ('/data/pipeline-aws'){
+								
+													sh "rm -rf *"
+													sh "mkdir aws-devops"
+								
+								}
+						}
+			}
+			
+			stage ('stage-3'){
+						steps {
+							dir ('/data/pipeline-velocity'){
+								
+													sh "rm -rf *"
+													sh "mkdir aws-devops-velocity"
+								
+								}
+						}
+			}
+	
+	}
+
+}
